@@ -17,13 +17,13 @@ use App\Models\Listing;
 /*
     Anatomy:
 
-    Route = generated class for rerouting; 
+    Route = generated class for rerouting;
 
     :: = this is in exact analogy as using '.' in Java
-    e.g. ClassName.function();
+    e.g. ClassName.function() without the need to instantiate;
 
     '/' = not entirely explained here, but this is what
-    is extended in the URL, kind of like if you go to another 
+    is extended in the URL, kind of like if you go to another
     page and it shows another directory like /mainpage ->
     /mainpage/1 or /mainpage -> /secondpage
 
@@ -32,7 +32,7 @@ use App\Models\Listing;
     view() = includes parameters such as a String param which you
     can put the webpage it is being rerouted to(extensions do not
     need to be included, only the webpage name), and a List[] or Array{}
-    that holds at least one value that gets passed as a global variable 
+    that holds at least one value that gets passed as a global variable
     to the rerouted webpage
 
     'listings' = webpage being rerouted to
@@ -46,8 +46,8 @@ use App\Models\Listing;
     or in this whole context, this is the value that usually being associated
     to the unique ID its being paired to like a JSON object or Dictionary or HashMap
 
-    Listing::getList() = 
-        Listing -> Class Name; 
+    Listing::getList() =
+        Listing -> Class Name;
         :: -> operator to call a function;
         getList() -> function within the class
 
@@ -71,11 +71,31 @@ Route::get('/listings/{id}', function($id){
     ]);
 });
 
-/**
- * Route::get('/listings/{id}', function($id){
-    return view('listing', [
-        'item' => Listing::find($id)
-    ]);
+/*
+    ways to utilize routes:
+
+    //Redirect:
+    Route::get('/listings/{id}', function($id){
+        return view('listing', [
+            'item' => Listing::find($id)
+        ]);
+    });
+
+    //Redirect:
+    Route::get('/listings/{id}', function($id){
+        return view('listing', [
+            'item' => Listing::find($id)
+        ]);
+    });
+
+    //Status Code Response:
+    Route::get('/listings/{id}', function($id){
+        return response(
+            '<h1>Hello World</h1>',
+            <<insert status code that corresponds with the response>>
+        )
+        -> header() // I have no idea what these are and the
+        -> header() '->' operators means just accessing classes, similar to ::
     });
 
  */
