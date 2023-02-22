@@ -15,13 +15,14 @@
             </a>
             @if(false) {{-- if online status !null, then display the ff, other wise, register and login --}}
             {{--
-                <a class="links" href="#"><i class="fa fa fa-fw fa-user"></i> Profile</a>
                 <a class="links" href="#"><i class="fa fa-fw fa-user"></i> Logout</a>
-
+                <a class="links" href="#"><i class="fa fa fa-fw fa-user"></i> Profile</a>
+                <a class="links" href="#"><i class="fa fa fa-fw fa-info"></i> About</a>
             --}}
             @else
-                <a class="links" href="#"><i class="fa fa-fw fa-envelope"></i> Register</a>
                 <a class="links" href="#"><i class="fa fa-fw fa-user"></i> Login</a>
+                <a class="links" href="#"><i class="fa fa-fw fa-pencil"></i> Register</a>
+                <a class="links" href="#"><i class="fa fa fa-fw fa-info"></i> About</a>
             @endif
         </nav>
     </header>

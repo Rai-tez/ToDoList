@@ -58,16 +58,20 @@ use App\Models\Listing;
 */
 
 // get List
+Route::get('/', function() {
+    return view('todolist',[
+        'heading' => 'Tasuke',
+        'tasks' => ToDoList::all()
+    ]);
+});
+
 // Route::get('/', function() {
-//     return view('listings',[
-//         'heading' => 'Tasuke',
-//         'tasks' => ToDoList::all()
-//     ]);
+//     return view('homepage');
 // });
 
-Route::get('/', function() {
-    return view('homepage');
-});
+// Route::get('/Login', function() {
+//     return view('homepage');
+// });
 
 // Single List
 // Route::get('/listing/{id}', function($id){
