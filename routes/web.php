@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ToDoList;
 use Illuminate\Support\Facades\Route;
 use App\Models\Listing;
 
@@ -58,18 +59,26 @@ use App\Models\Listing;
 
 // get List
 Route::get('/', function() {
-    return view('listings',[
-        'heading' => 'Latest Listings',
-        'listings' => Listing::getList()
+    return view('todolist',[
+        'heading' => 'Tasuke',
+        'tasks' => ToDoList::all()
     ]);
 });
 
+// Route::get('/', function() {
+//     return view('homepage');
+// });
+
+// Route::get('/Login', function() {
+//     return view('homepage');
+// });
+
 // Single List
-Route::get('/listings/{id}', function($id){
-    return view('listing', [
-        'item' => Listing::find($id)
-    ]);
-});
+// Route::get('/listing/{id}', function($id){
+//     return view('listing', [
+//         'item' => Listing::find($id)
+//     ]);
+// });
 
 /*
     ways to utilize routes:
