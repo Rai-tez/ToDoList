@@ -1,0 +1,25 @@
+   /**
+     * check .env for the database credentials, make sure
+     * to double check which database/schema it is being
+     * migrated to
+     *
+     * important terminal commands:
+     *
+     * | php artisan make:migration <name>| - create a php file that holds
+     * the structure of a table
+     *
+     * | php artisan migrate | - to migrate the php schema classes to
+     * database
+     *
+     * | php artisan db:seed | - to run seeding from php in order to
+     * transfer pre existing rows in the database (good for
+     * running any test with the database with fake data)
+     *
+     * | php artisan migrate:refresh | - another function in migrate
+     * that refreshes the database for any changes
+     *
+     * | php artisan make:model <name> | - makes a class equivalent of the database
+     *
+     * | php artisan make:factory <name> | - makes a factory
+     *
+     */

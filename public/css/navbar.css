@@ -1,0 +1,41 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:white;
+    overflow: hidden;
+    color: #243464;
+    margin: 0;
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    background:white;
+    width: 100%;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    padding: 10px;
+}
+
+nav .navbar-logo{
+    float: left;
+}
+
+nav .links{
+    float: right;
+    color: #243464;
+    display: block;
+    text-decoration: none;
+    margin: 10px;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+nav .links:hover{
+    background-color: #243464;
+    color: white;
+}
+
+
+
+
+

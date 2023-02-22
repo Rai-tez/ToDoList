@@ -1,37 +1,47 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do List</title>
-</head>
-<body>
-    {{--
-        the @ symbol replaces the terrible starting and ending tags
-        so its much more cleaner
 
-        the {{<variable>}} is a quicker way to access variables without
-            using the <"?"php"?"> for cleaner code
-    --}}
+@extends('navbar')
 
-    <h1>{{$heading}}</h1>
+{{--
+    the @ symbol replaces the terrible starting and ending tags
+    so its much more cleaner
 
+    the {{<variable>}} is a quicker way to access variables without
+        using the <"?"php"?"> for cleaner code
+--}}
 
-    @php
-        // insert code here
-    @endphp
+@section('content')
 
-    @if(count($listings) == 0)
-        <h1>Get up and do something now!</h1>
+    <h1>{{ $heading }}</h1>
+    @if($tasks == null || count($tasks) == 0)
+        <h1>No tasks for now!</h1>
     @else
-        @foreach($listings as $item)
-            <h2>
-                <a href="/listings/{{$item['id']}}">
-                    {{$item['title']}}
-                </a>
-            </h2>
-            <p>{{$item['Description']}}</p>
-        @endforeach
+        <table>
+            <tr>
+                <th></th>
+                <th>Task</th>
+                <th>Status</th>
+                <th>Delete Task</th>
+            </tr>
+            @foreach($tasks as $task)
+                <tr>
+                    <td><i class="fa fa-pencil"></i></td>
+                    @if($task['status'] == 1)
+                        <td><p><s>{{ $task['task'] }}</s></p></td>
+                        <td>
+                            <input type="checkbox" value="status" checked>
+                        </td>
+                    @else
+                        <td><p>{{ $task['task'] }}</p></td>
+                        <td>
+                            <input type="checkbox" value="status">
+                        </td>
+                    @endif
+                </tr>
+            @endforeach
+        </table>
     @endif
-</body>
-</html>
+
+<div>
+
+</div>
+@endsection
