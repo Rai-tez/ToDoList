@@ -1,5 +1,4 @@
-@extends('navbar')
-
+@extends('header_footer')
 
 <head>
     <link rel="stylesheet" href="{{ asset('css/homepage.css') }}">

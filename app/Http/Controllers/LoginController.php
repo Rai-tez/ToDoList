@@ -10,7 +10,7 @@ class ToDoListController extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function test(){
-        return view();
+    public function redirectToPage(){
+        return view('/login_page');
     }
 }

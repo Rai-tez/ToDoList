@@ -1,8 +1,7 @@
 <?php
 
-use App\Models\ToDoList;
 use Illuminate\Support\Facades\Route;
-use App\Models\Listing;
+use App\Models\ToDoList;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,21 +56,29 @@ use App\Models\Listing;
 
 */
 
-// get List
+// landing page
 Route::get('/', function() {
+    return view('homepage');
+});
+
+// User/ToDoList page
+Route::get('/todolist', function() {
+    // model.getList(id(username));
     return view('todolist',[
         'heading' => 'Tasuke',
         'tasks' => ToDoList::all()
     ]);
 });
 
-// Route::get('/', function() {
-//     return view('homepage');
-// });
+// Login page
+Route::get('/login', function() {
+    return view('login_page');
+});
 
-// Route::get('/Login', function() {
-//     return view('homepage');
-// });
+// Register page
+Route::get('/register', function() {
+    return view('register_page');
+});
 
 // Single List
 // Route::get('/listing/{id}', function($id){
