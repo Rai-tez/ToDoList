@@ -1,3 +1,16 @@
+.todolist-block{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
 .center{
     text-align: center;
+}
+
+.dml-buttons{
+    color: #243464;
+    border: none;
+    background-color: transparent;
 }
