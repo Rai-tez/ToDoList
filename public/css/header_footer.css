@@ -67,3 +67,10 @@ footer a{
     padding: 10px;
     font-size: 20px;
 }
+
+.center-div{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
