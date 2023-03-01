@@ -1,5 +1,5 @@
 
-@extends('header_footer')
+@extends('partials/header_footer')
 
 {{--
     the @<keyword> syntax replaces the terrible starting and ending tags
@@ -13,9 +13,8 @@
     <head>
         <link rel="stylesheet" href="{{ asset('css/todolist.css') }}">
     </head>
-    <h1>{{ $heading }}</h1>
     <div class="todolist-block">
-        @if($tasks == null || count($tasks) == 0)
+        @if($tasks == null)
             <h1 class="center">No tasks for now!</h1>
         @else
             <table style="margin-top: 10vh">
