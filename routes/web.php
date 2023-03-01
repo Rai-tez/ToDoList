@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ToDoListController;
 use Illuminate\Support\Facades\Route;
 use App\Models\ToDoList;
 
@@ -57,28 +61,26 @@ use App\Models\ToDoList;
 */
 
 // landing page
-Route::get('/', function() {
-    return view('homepage');
-});
+Route::get('/', function() {return view('homepage');});
 
-// User/ToDoList page
-Route::get('/todolist', function() {
-    // model.getList(id(username));
-    return view('todolist',[
-        'heading' => 'Tasuke',
-        'tasks' => ToDoList::all()
-    ]);
-});
-
-// Login page
-Route::get('/login', function() {
+// Navigation
+Route::get('/todolist', [ToDoListController::class, 'showList']);
+Route::get('/login', function(){
     return view('login_page');
 });
+Route::get('/register', function(){
+    request()->session()->pull('login_err');
+    return view('register_page');}
+);
 
-// Register page
-Route::get('/register', function() {
-    return view('register_page');
-});
+// login
+Route::post('/logincontroller', [UserController::class, 'login']);
+
+// register
+// Route::post('/todolist', [UserController::class, 'register']);
+
+// Session expiry/termination
+// Route::get('/todolist', [NavigationController::class, 'showList']);
 
 // Single List
 // Route::get('/listing/{id}', function($id){

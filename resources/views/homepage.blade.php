@@ -1,4 +1,4 @@
-@extends('header_footer')
+@extends('partials/header_footer')
 
 <head>
     <link rel="stylesheet" href="{{ asset('css/homepage.css') }}">

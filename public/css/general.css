@@ -68,9 +68,26 @@ footer a{
     font-size: 20px;
 }
 
-.center-div{
+.center-div-login{
     display: block;
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
+    margin-top: 100px;
     width: 50%;
 }
+
+.login-block{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vh;
+    height: 50vh;
+    text-align: center;
+    color: white;
+    background-color: #243464;
+    border-width: 2px;
+    border-radius: 30px;
+}
+
