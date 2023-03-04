@@ -9,27 +9,25 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     public function login(Request $request){
+        $request->session()->pull('login_err');
         $username = $request->input('username_input');
-        $password = $request->input('password_input');
+        $password = $request->input('pass_input');
         if($request->submit == 'register_submit'){
             return redirect('register');
         } else {
 
-            if($username == null || $password == null){
+            if(empty($username) || empty($password)){
                 $request->session()->put('login_err', "Username or password incorrect");
                 return redirect('login');
             }
 
             $userRetrieved = $this->retrieveUser($username);
             $userCompare = ($username == $userRetrieved->name);
-            $passCompare = ($password == $userRetrieved->pass);
-
-            echo $userRetrieved;
+            $passCompare = ($password == $userRetrieved->password);
 
             if($userCompare && $passCompare){
                 $request->session()->put('id', $userRetrieved->id);
                 $request->session()->put('username', $userRetrieved->name);
-                $request->session()->pull('login_err');
                 return redirect('todolist');
             } else {
                 // user does not exist
@@ -37,7 +35,7 @@ class UserController extends Controller
                 // that either the username or password have failed
                 // and redirect them back to the login page again
                 // with the prompt mentioned
-                $request->session()->put('login_err', "Username or password incorrect");
+                // $request->session()->put('login_err', "Username or password incorrect");
                 return redirect('login');
             }
         }
