@@ -2,25 +2,37 @@
 
 @section('content')
 
-<form class="login-block" action="{{ url('/register') }}" method="">
-    <div class="center-div-login" style="">
+<form class="login-block" action="{{ url('/register') }}" method="POST">
+    @csrf
+    <div class="" style="">
         <h1>Register</h1>
-        <div class="row1">
+        <div class="">
             <span><i class="fa fa-user"></i></span>
-            <input type="text" name="username_input" id="" placeholder="Username">
+            <input type="text" name="reg_username_input" id="" placeholder="Username">
         </div>
+        @error('reg_username_input')
+            <p class="err">{{ $message }}</p>
+        @enderror
         <br>
-        <div class="row2">
+        <div class="">
             <span><i class="fa fa-lock"></i></span>
-            <input type="password" name="pass_inpuit" id="" placeholder="Password">
+            <input type="password" name="reg_pass_input" id="" minlength="7" placeholder="Password">
+
         </div>
+        @error('reg_pass_input')
+            <p class="err">{{ $message }}</p>
+        @enderror
         <br>
-        <div class="row2">
+        <div class="">
             <span><i class="fa fa-lock"></i></span>
-            <input type="password" name="retyped_pass" id="" placeholder="Retype password">
+            <input type="password" name="reg_retyped_pass_input" id="" placeholder="Retype password">
         </div>
+        @error('reg_retyped_pass_input')
+            <p class="err">{{ $message }}</p>
+        @enderror
+        <p class="err">{{ session('mismatch') }}</p>
         <br>
-        <div class="row5">
+        <div class="">
             <button style="" type="submit" name= "register"> Sign Up</button>
         </div>
     </div>

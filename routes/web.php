@@ -63,21 +63,18 @@ use App\Models\ToDoList;
 // landing page
 Route::get('/', function() {return view('homepage');});
 
-// Navigation
+
 Route::get('/todolist', [ToDoListController::class, 'showList']);
-Route::get('/login', function(){
-    return view('login_page');
-});
-Route::get('/register', function(){
-    request()->session()->pull('login_err');
-    return view('register_page');}
-);
 
-// login
-Route::post('/logincontroller', [UserController::class, 'login']);
+// Navigation
+Route::get('/login', function(){return view('login_page');});
+Route::get('/register', function(){return view('register_page');});
 
-// register
-// Route::post('/todolist', [UserController::class, 'register']);
+// Login
+Route::post('/login', [UserController::class, 'login']);
+
+//register
+Route::post('/register', [UserController::class, 'register']);
 
 // Session expiry/termination
 // Route::get('/todolist', [NavigationController::class, 'showList']);

@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
-
 
 class UserController extends Controller
 {
     public function login(Request $request){
-        $request->session()->pull('login_err');
+        $request->session()->pull('login_msg');
         $username = $request->input('username_input');
         $password = $request->input('pass_input');
         if($request->submit == 'register_submit'){
@@ -17,7 +17,7 @@ class UserController extends Controller
         } else {
 
             if(empty($username) || empty($password)){
-                $request->session()->put('login_err', "Username or password incorrect");
+                $request->session()->put('login_msg', "Username or password incorrect");
                 return redirect('login');
             }
 
@@ -25,7 +25,11 @@ class UserController extends Controller
             $userCompare = ($username == $userRetrieved->name);
             $passCompare = ($password == $userRetrieved->password);
 
+            // if(){
+
+            // }
             if($userCompare && $passCompare){
+                $request->session()->flush();
                 $request->session()->put('id', $userRetrieved->id);
                 $request->session()->put('username', $userRetrieved->name);
                 return redirect('todolist');
@@ -41,9 +45,29 @@ class UserController extends Controller
         }
     }
 
+    public function register(Request $request){
+        $request->session()->pull('mismatch');
+        $formFields = $request->validate([
+            'reg_username_input' => ['required', Rule::unique('users', 'name')],
+            'reg_pass_input' => 'required',
+            'reg_retyped_pass_input' => 'required',
+        ]);
 
+        $username = $request->input('reg_username_input');
+        $password = $request->input('reg_pass_input');
+        $retypedPassword = $request->input('reg_retyped_pass_input');
 
-    public function redirectToHomePage(){
+        if($password != $retypedPassword){
+            $request->session()->put('mismatch', 'Passwords are not the same');
+            return redirect('register');
+        } else {
+            $request->session()->put('login_msg', 'Registration successful!');
+            return redirect('login');
+        }
+
+    }
+
+    public static function redirectToHomePage(){
         /**
          * if $_SESSION is null or terminated,
          * redirect aback to hompeage or login page for
