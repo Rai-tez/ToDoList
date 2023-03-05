@@ -91,3 +91,8 @@ footer a{
     border-radius: 30px;
 }
 
+.err{
+    font-size: 12px;
+    margin:0;
+    padding:0;
+}

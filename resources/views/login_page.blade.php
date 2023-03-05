@@ -2,11 +2,11 @@
 
 @section('content')
 
-<form class="login-block" action="{{ url('/logincontroller') }}" method="POST">
+<form class="login-block" action="{{ url('/login') }}" method="POST">
     @csrf
     <div class="center-div-login" style="">
         <h1>Login</h1>
-        <h3>{{ session('login_err') }}</h3>
+        <h3>{{ session('login_msg') }}</h3>
         <div class="">
             <span><i class="fa fa-user"></i></span>
             <input type="text" name="username_input" id="" placeholder="Username">
